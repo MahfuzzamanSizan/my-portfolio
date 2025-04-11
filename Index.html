@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahfuzzaman Sizan Portfolio</title>
+  <!-- ① IMPORT POPPINS FROM GOOGLE FONTS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* ========== VARIABLES & GLOBAL ========== */
+    :root {
+      --primary:    #BB86FC;  /* soft purple */
+      --secondary:  #03DAC6;  /* teal */
+      --accent:     #CF6679;  /* pinkish */
+      --bg:         #121212;  /* dark background */
+      --card-bg:    #1E1E1E;  /* card surfaces */
+      --text:       #E0E0E0;  /* main text */
+      --text-light: #A0A0A0;  /* secondary text */
+      --border:     #272727;  /* subtle borders */
+      /* … your existing color vars … */
+      --font-body: 'Poppins', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--primary); text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--secondary); }
+
+    /* ========== NAVBAR ========== */
+    nav {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo { font-size: 1.4rem; font-weight: bold; color: var(--primary); }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { padding: 0.5rem; border-radius: 0.25rem; transition: background 0.3s; }
+    nav a:hover { background: var(--border); }
+
+    /* ========== HERO ========== */
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('IMG_1363_jpg.JPG') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--accent); margin-bottom: 0.5rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-light); max-width: 600px; }
+
+    /* ========== SECTIONS ========== */
+    section { padding: 4rem 1rem; max-width: 1000px; margin: auto; }
+    section h2 { text-align: center; margin-bottom: 1.5rem; color: var(--primary); }
+
+    /* ========== ABOUT ========== */
+    .about { display: flex; align-items: center; gap: 2rem; }
+    .about img {
+      width: 200px; height: 200px; object-fit: cover;
+      border-radius: 50%; border: 2px solid var(--border);
+    }
+    .about .bio { color: var(--text-light); line-height: 1.5; }
+
+    /* ========== SKILLS ========== */
+    .skills {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    .skill {
+      background: var(--card-bg); padding: 1rem; border-radius: 0.5rem;
+      text-align: center; border: 1px solid var(--border);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .skill:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .skill h3 { margin-bottom: 0.5rem; color: var(--primary); }
+
+    /* ========== PROJECTS ========== */
+    .projects {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card-bg); border-radius: 0.5rem; overflow: hidden;
+      border: 1px solid var(--border); display: flex; flex-direction: column;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .project-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
+    .project-card img { width: 100%; height: 140px; object-fit: cover; display: block; }
+    .project-card .content { padding: 1rem; flex-grow: 1; }
+    .project-card h4 { margin-bottom: 0.5rem; color: var(--secondary); }
+    .project-card p { flex-grow: 1; color: var(--text-light); margin-bottom: 1rem; }
+    .project-card a {
+      display: inline-block; margin-top: auto;
+      background: var(--accent); color: #fff; padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem; transition: background 0.3s;
+    }
+    .project-card a:hover { background: var(--primary); }
+
+    /* ========== CONTACT ========== */
+    .contact form {
+      display: grid; gap: 1rem; max-width: 500px; margin: auto;
+    }
+    .contact input,
+    .contact textarea {
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text); padding: 0.75rem; border-radius: 0.25rem;
+      transition: border-color 0.3s;
+    }
+    .contact input:focus,
+    .contact textarea:focus { outline: none; border-color: var(--primary); }
+    .contact button {
+      background: var(--primary); color: #fff; border: none;
+      padding: 0.75rem 1.5rem; border-radius: 0.25rem; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact button:hover { background: var(--secondary); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center; padding: 2rem 1rem;
+      color: var(--text-light); font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ========== MOBILE NAV & REVEAL ========== */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+    .nav-toggle .hamburger {
+      width: 24px; height: 2px; background: var(--text); position: relative;
+    }
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+      content: ''; position: absolute; width: 24px; height: 2px;
+      background: var(--text); transition: transform 0.3s;
+    }
+    .nav-toggle .hamburger::before { transform: translateY(-6px); }
+    .nav-toggle .hamburger::after  { transform: translateY(6px); }
+    nav ul.open { display: flex; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      nav ul {
+        display: none; flex-direction: column; gap: 0;
+        background: var(--card-bg); position: absolute;
+        top: 100%; right: 1.5rem;
+        border: 1px solid var(--border); border-radius: 0.5rem;
+        overflow: hidden;
+      }
+      nav ul li { margin: 0; }
+      nav ul.open { display: flex; }
+    }
+    .reveal { opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Mahfuzzaman Sizan</div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span class="hamburger"></span>
+    </button>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>Hi, I'm Mahfuzzaman</h1>
+    <p></p>
+  </div>
+
+  <section id="about" class="about reveal">
+    <img src="IMG_1363_jpg.JPG" alt="Profile Photo">
+    <div class="bio">
+      <p>Motivated and detail-oriented aspiring Software Engineer with hands-on experience in full-stack web development and robust knowledge of computer security, machine learning, and database systems. Proficient in multiple programming languages and frameworks, with a proven track record of successfully delivering academic and personal projects. Passionate about building innovative and user-centric solutions, and eager to contribute to dynamic development teams.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills reveal">
+    <div class="skill"><h3>C</h3></div>
+    <div class="skill"><h3>C++</h3></div>
+    <div class="skill"><h3>Java</h3></div>
+    <div class="skill"><h3>Python</h3></div>
+    <div class="skill"><h3>HTML</h3></div>
+    <div class="skill"><h3>CSS</h3></div>
+    <div class="skill"><h3>Bootstrap</h3></div>
+    <div class="skill"><h3>JavaScript</h3></div>
+    <div class="skill"><h3>React</h3></div>
+    <div class="skill"><h3>Node.js</h3></div>
+    <div class="skill"><h3>Spring Boot</h3></div>
+    <div class="skill"><h3>MongoDB</h3></div>
+    <div class="skill"><h3>MySQL</h3></div>
+    <div class="skill"><h3>Oracle</h3></div>
+    <div class="skill"><h3>Git & GitHub</h3></div>
+    <div class="skill"><h3>Machine Learning</h3></div>
+  </section>
+
+  <section id="projects" class="projects reveal">
+    <div class="project-card">
+      <img src="bee.png" alt="TravelBee">
+      <div class="content">
+        <h4>TravelBee</h4>
+        <p>A full-stack web application for hotel booking, built with NodeJS, React, and MongoDB.</p>
+        <a href="https://github.com/MahfuzzamanSizan/CSE-408-Final-TravelBee" target="_blank">View Project</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="football.jpg" alt="Football Player Database System">
+      <div class="content">
+        <h4>Football Player DB System</h4>
+        <p>A JavaFX application to manage football player records, with features for adding, editing, and querying data.</p>
+        <a href="https://github.com/MahfuzzamanSizan/CSE-108-JavaFX-Project-Football_Player_Database_System" target="_blank">View Project</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="pacman.jpg" alt="Pacman Game">
+      <div class="content">
+        <h4>Pacman Game</h4>
+        <p>A classic 2D Pacman game implemented in C using the iGraphics library.</p>
+        <a href="https://github.com/MahfuzzamanSizan/CSE-102-iGraphics-Project-Pacman" target="_blank">View Project</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="androRAT.avif" alt="AndroRAT">
+      <div class="content">
+        <h4>AndroRAT</h4>
+        <p>A remote administration tool for Android devices focusing on security and control features.</p>
+        <a href="https://github.com/MahfuzzamanSizan/CSE-406-Computer_Security-Project-AndroRAT" target="_blank">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact reveal">
+    <h2>Contact Me</h2>
+    <form action="mailto:sizanmahfuzzaman@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Name" required>
+      <input type="email" name="Email" placeholder="Your Email" required>
+      <textarea name="Message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mahfuzzaman Sizan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // 1) Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu   = document.querySelector('nav ul');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+
+    // 2) Smooth scroll
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+        navMenu.classList.remove('open');
+      });
+    });
+
+    // 3) Scroll-reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+
+    // Typewriter effect
+const subtitle = document.querySelector('.hero p');
+const phrases = ['Full‑Stack Developer', 'Software Engineer', 'Problem Solver'];
+let pIdx = 0, cIdx = 0;
+
+function type() {
+  // Clear subtitle at the start of each new word
+  if (cIdx === 0) {
+    subtitle.textContent = '';
+  }
+
+  if (cIdx < phrases[pIdx].length) {
+    subtitle.textContent += phrases[pIdx].charAt(cIdx++);
+    setTimeout(type, 100);
+  } else {
+    setTimeout(erase, 2000);
+  }
+}
+
+function erase() {
+  if (cIdx > 0) {
+    subtitle.textContent = phrases[pIdx].substring(0, cIdx--);
+    setTimeout(erase, 50);
+  } else {
+    pIdx = (pIdx + 1) % phrases.length;
+    setTimeout(type, 500);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => { type(); });
+
+  </script>
+</body>
+</html>
